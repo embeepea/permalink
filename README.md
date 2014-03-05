@@ -2,10 +2,10 @@ Permalink
 =========
 
 This is a jQuery plugin that converts a DOM element into "permalink"
-widget.  This means that the element becomes clickable, and clicking
-on it will pop up a small div containing a URL that has been
-pre-selected, so that the user can conveniently copy/paste the URL.
-The URL is passed as an option when the plugin is invoked.
+widget.  This makes the element clickable, and clicking on it will pop
+up a small div containing a URL that has been pre-selected, so that
+the user can conveniently copy/paste the URL.  The URL is passed as an
+option to the plugin.
 
 For example, if you have
 
@@ -33,7 +33,7 @@ and when the user clicks on it they will see the following:
   <img src="./sample-clicked.png?raw=true"/>
 </p>
 
-The intended use is stateful browser applications which can generate URLs
+The intended use is in stateful browser applications which can generate URLs
 to re-create the current state; the permalink widget provides a convenient
 way for the application to give the user access to the URL, without always
 displaying it somewhere on the page.
@@ -50,3 +50,33 @@ $('#permalink').permalink('url', 'http://www.newsite.com/page.html');
 // return the widget's current url:
 $('#permalink').permalink('url');
 ```
+
+Installation
+------------
+
+To install the permalink plugin, just put this directory somewhere on the same
+server as your application, and load the `permalink.js` and `permalink.css` files
+in the `head` of your page.  Obviously, you'll need to load jQuery itself as well,
+before loading `permalink.js`.  For example, if you put the Permalink files
+in a directory named `permalink`, which is in the same directory as your HTML
+file:
+
+```html
+<html>
+  <head>
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="permalink/permalink.js"></script>
+    <link type="text/css" rel="stylesheet" href="permalink/permalink.css"/>
+  <head>
+  <body>
+    ...
+  </body>
+</html>
+```
+
+The files that Permalink needs at run time are `permalink.js`,
+`permalink.css`, `link.png`, and `closebutton.png`, so you can delete
+the other files from this directory if you don't want them.  The files
+`permalink.css`,`link.png`, and `closebutton.png` should all be in the
+same directory, but `permalink.js` can be located elsewhere if you
+want.
