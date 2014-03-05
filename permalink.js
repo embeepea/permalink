@@ -40,7 +40,8 @@
             if (options === undefined) { options = {}; }
 
             var defaults = {
-                'url' : 'http://www.example.com'
+                'url'  : 'http://www.example.com',
+                'icon' : true
             };
             var settings = $.extend({}, defaults, options);
             return this.each(function () {
@@ -55,8 +56,10 @@
                 }
 
                 $this.addClass('permalink link');
-                //$this.html( '<img src="link.png">' + $this.html() );
-                $this.html( '<div class="linkicon"></div>' + $this.html() );
+
+                if ($this.data('permalink').settings.icon) {
+                    $this.html( '<div class="linkicon"></div>' + $this.html() );
+                }
 
                 $this.on('click.permalink', function(e) {
 

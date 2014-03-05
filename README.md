@@ -38,6 +38,20 @@ to re-create the current state; the permalink widget provides a convenient
 way for the application to give the user access to the URL, without always
 displaying it somewhere on the page.
 
+Note that the use of the word "Permalink" in the targeted element is
+optional; the plugin simply prepends a little link icon to the front
+of the element's existing content, and makes the element clickable.
+So you can use whatever text (or image) you want.  You can also suppress the
+insertion of the link icon by specifying the `icon : false` option when
+invoking the plugin:
+
+```js
+$('#permalink').permalink({
+    url  : 'http://www.mysite.com/page.html',
+    icon : false
+});
+```
+
 Permalink provides a single plugin method named `url`, which can be used to
 set or get the current url after the plugin has been invoked:
 
