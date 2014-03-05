@@ -94,6 +94,17 @@
             });
         },
 
+        url : function(url) {
+            if (url !== undefined) {
+                this.each(function () {
+                    $(this).data('permalink').settings.url = url;
+                });
+                return this;
+            } else {
+                return $(this).data('permalink').settings.url;
+            }
+        }
+
     };
 
     $.fn.permalink = function (method) {
