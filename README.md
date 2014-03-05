@@ -27,7 +27,7 @@ will cause the above `span` to appear as
   <img src="./sample.png?raw=true"/>
 </p>
 
-and when the user clicks on it they will see the following:
+and when the user clicks on it the following will appear:
 
 <p align="center">
   <img src="./sample-clicked.png?raw=true"/>
@@ -59,7 +59,7 @@ server as your application, and load the `permalink.js` and `permalink.css` file
 in the `head` of your page.  Obviously, you'll need to load jQuery itself as well,
 before loading `permalink.js`.  For example, if you put the Permalink files
 in a directory named `permalink`, which is in the same directory as your HTML
-file:
+file, then your HTML file should look something like this:
 
 ```html
 <html>
