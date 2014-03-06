@@ -61,7 +61,7 @@
                     $this.html( '<div class="linkicon"></div>' + $this.html() );
                 }
 
-                $this.on('click.permalink', function(e) {
+                $this.bind('click.permalink', function(e) {
 
                     if ($this.data('permalink').popup_open) {
                         return false;
@@ -73,7 +73,7 @@
 
                     $this.data('permalink').popup_open = true;
 
-                    $popup.on('click.permalink', function() {
+                    $popup.bind('click.permalink', function() {
                         // return false means consume this event, so that the click.permalink handler
                         // on the containing (body) element doesn't fire
                         return false; 
@@ -82,11 +82,11 @@
                     var dismiss = function() {
                         $popup.remove();
                         $this.data('permalink').popup_open = false;
-                        $('body').off('click.permalink');
+                        $('body').unbind('click.permalink');
                     };
 
-                    $('body').on('click.permalink', dismiss);
-                    $('.permalink.popup .closebutton').on('click.permalink', dismiss);
+                    $('body').bind('click.permalink', dismiss);
+                    $('.permalink.popup .closebutton').bind('click.permalink', dismiss);
 
                     $('.permalink.popup input.url')[0].select();
 
