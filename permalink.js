@@ -70,6 +70,7 @@
                     var $popup = $(permalink_html($this.data('permalink').settings.url)).insertAfter($this);
 
                     $this.data('permalink').popup_open = true;
+                    $this.data('permalink').$popup = $popup;
 
                     $popup.bind('click.permalink', function() {
                         // return false means consume this event, so that the click.permalink handler
@@ -80,8 +81,11 @@
                     var dismiss = function() {
                         $popup.remove();
                         $this.data('permalink').popup_open = false;
+                        delete $this.data('permalink').$popup;
+                        delete $this.data('permalink').dismiss_popup;
                         $('body').unbind('click.permalink');
                     };
+                    $this.data('permalink').dismiss_popup = dismiss;
 
                     $('body').bind('click.permalink', dismiss);
                     $('.permalink.popup .closebutton').bind('click.permalink', dismiss);
@@ -99,12 +103,25 @@
             if (url !== undefined) {
                 this.each(function () {
                     $(this).data('permalink').settings.url = url;
+                    if ('$popup' in $(this).data('permalink')) {
+                        $(this).data('permalink').$popup.find('input.url').attr('value', url);
+                        $(this).data('permalink').$popup.find('input.url')[0].select();
+                    }
                 });
                 return this;
             } else {
                 return $(this).data('permalink').settings.url;
             }
+        },
+
+        dismiss : function() {
+            this.each(function () {
+                if ($(this).data('permalink').popup_open) {
+                    $(this).data('permalink').dismiss_popup();
+                }
+            });
         }
+
 
     };
 
